@@ -1,12 +1,16 @@
 import express from 'express';
 import route from './routes/index.js';
 import bootstrap from './app/components/bootstrap.js';
+import db from './config/db/index.js'
 
 const app = express();
 
 bootstrap(app, express);
 
 route(app);
+
+//Connect to DB
+db.connect();
 
 //Middleware
 app.use(express.urlencoded({
